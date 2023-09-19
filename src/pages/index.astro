@@ -34,18 +34,25 @@ const projects = (await getCollection('work'))
 					tagline="Fullstack Software Engineer."
 				>
 					<div class="roles">
+						<Pill><Icon icon="typescript-logo" size="1.33em" /> TypeScript</Pill>
 						<Pill><Icon icon="mongo-logo" size="1.33em" /> MongoDB</Pill>
 						<Pill><Icon icon="express-logo" size="1.33em" /> Express</Pill>
 						<Pill><Icon icon="react-logo" size="1.33em" /> React</Pill>
 						<Pill><Icon icon="node-logo" size="1.33em" /> Node</Pill>
 					</div>
+					<!-- <div class="roles">
+						<Pill><Icon icon="mongo-logo" size="1.33em" /> Nginx</Pill>
+						<Pill><Icon icon="express-logo" size="1.33em" /> SASS</Pill>
+						<Pill><Icon icon="react-logo" size="1.33em" /> ASTRO</Pill>
+						<Pill><Icon icon="node-logo" size="1.33em" /> JEST</Pill>
+					</div> -->
 				</Hero>
 
 				<img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+					alt="Selfie of Joezari w/ blurred background"
 					width="480"
 					height="620"
-					src="/assets/portrait.jpg"
+					src="public/assets/selfie.jpg"
 				/>
 			</header>
 
@@ -55,8 +62,8 @@ const projects = (await getCollection('work'))
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Selected Work</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
+					<h3>Featured Projects</h3>
+					<p>Take a look below at some of my projects I am most proud of.</p>
 				</header>
 
 				<div class="gallery">
