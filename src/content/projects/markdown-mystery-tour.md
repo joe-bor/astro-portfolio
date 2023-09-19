@@ -1,14 +1,14 @@
 ---
-title: Markdown Mystery Tour
-publishDate: 2020-03-02 00:00:00
+title: Itenerary
+publishDate: 2020-09-19 00:00:00
 img: /assets/stock-1.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
-  We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
+  An app that helps you keep track of your travel plans!
 tags:
-  - Design
-  - Dev
-  - User Testing
+  - TypeScript
+  - MERN
+  - Remix
 ---
 
 ## Level-two heading
