@@ -1,7 +1,7 @@
 ---
 title: Bank Accounts API
 github: https://github.com/joe-bor/BankAccounts-Api
-live: null
+live: /home
 publishDate: 2023-07-06 00:00:00
 img: /assets/bank-api.png
 img_alt: ERD of the models used in the API.
