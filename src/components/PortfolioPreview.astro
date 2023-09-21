@@ -1,11 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
 
 interface Props {
-	project: CollectionEntry<'work'>;
+	project: CollectionEntry<'projects'>;
 }
 
-const { data, slug } = Astro.props.project;
+const { data, slug, } = Astro.props.project;
 ---
 
 <a class="card" href={`/projects/${slug}`}>
@@ -13,8 +14,13 @@ const { data, slug } = Astro.props.project;
 	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
 </a>
 <div class='links'>
-	<a class='project-link' href={data.github}>Github</a>
-	<a class='project-link'' href={data.live}>Live</a>
+	<div>
+		<a class='project-link' target="_blank" href={data.github}> <Icon icon="github-logo" size='1.5em'/> </a>
+		<a class='project-link'' target="_blank" href={data.live}> <Icon icon="rocket-launch" size="1.5em"/> </a>
+	</div>
+	<ul class="tags">
+		{data.tags.map(tag => <li>{tag}</li>)}
+	</ul>
 </div>
 
 <style>
@@ -47,6 +53,7 @@ const { data, slug } = Astro.props.project;
 
 	.project-link {
 		text-decoration:none;
+		margin: 0 .5rem;
 	}
 
 	.title {
@@ -66,6 +73,16 @@ const { data, slug } = Astro.props.project;
 		object-fit: cover;
 	}
 
+	.tags {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		flex-grow: 1;
+		list-style-type: square;
+		color: var(--gray-200)
+	}
+
 	@media (min-width: 50em) {
 		.card {
 			height: 22rem;
@@ -81,7 +98,6 @@ const { data, slug } = Astro.props.project;
 			z-index: 2;
 			display:flex;
 			flex-direction:row;
-			justify-content: space-around;
 		}
 	}
 </style>
