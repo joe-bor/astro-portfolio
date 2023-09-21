@@ -19,7 +19,7 @@ const { data, slug, } = Astro.props.project;
 		<a class='project-link'' target="_blank" href={data.live}> <Icon icon="rocket-launch" size="1.5em"/> </a>
 	</div>
 	<ul class="tags">
-		{data.tags.map(tag => <li>{tag}</li>)}
+		{data.tags.slice(0, 5).map(tag => <li>{tag}</li>)}
 	</ul>
 </div>
 
@@ -94,7 +94,7 @@ const { data, slug, } = Astro.props.project;
 		}
 
 		.links {
-			margin-top: 0.35rem;
+			margin-top: 0.5rem;
 			z-index: 2;
 			display:flex;
 			flex-direction:row;

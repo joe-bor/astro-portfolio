@@ -9,7 +9,7 @@ description: |
   A web app that allows user to add their favorite NFTs to cart, while giving you the current crypto prices using coin gecko api
 tags:
   - MERN
-  - Coin Gecko API
+  - CoinGecko API
   - MetaMask API
   - Custom Framework
 ---

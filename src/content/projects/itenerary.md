@@ -11,6 +11,7 @@ tags:
   - TypeScript
   - MERN
   - Remix
+  - SQL
 ---
 
 ## Level-two heading
