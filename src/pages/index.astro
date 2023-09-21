@@ -23,6 +23,19 @@ const projects = (await getCollection('projects'))
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
+
+function getGreeting() {
+		const currentHour = new Date().getHours();
+
+		if (currentHour >= 6 && currentHour < 12) {
+			return 'Good morning, ';
+		} else if (currentHour >= 12 && currentHour < 18) {
+			return 'Good afternoon, ';
+		} else {
+			return 'Good evening, ';
+		}
+	}
+	const greeting = getGreeting() + "I'm Joezari Borlongan"
 ---
 
 <BaseLayout>
@@ -30,7 +43,7 @@ const projects = (await getCollection('projects'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Hello 👋🏼, I am Joezari Borlongan"
+					title={greeting}
 					tagline="Fullstack Software Engineer."
 				>
 					<div class="roles">
