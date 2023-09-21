@@ -6,7 +6,7 @@ interface Props {
 	project: CollectionEntry<'projects'>;
 }
 
-const { data, slug, } = Astro.props.project;
+const { data, slug } = Astro.props.project;
 ---
 
 <a class="card" href={`/projects/${slug}`}>
