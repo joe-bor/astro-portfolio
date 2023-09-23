@@ -6,7 +6,7 @@ publishDate: 2023-07-06 00:00:00
 img: /assets/bank-api.png
 img_alt: ERD of the models used in the API.
 description: |
-  Full CRUD RESTFUL API that consumes a 3rd party API for some of it's routes
+  Full CRUD RESTFUL API, with user authentication and authorization that consumes a 3rd party API for some of it's routes
 tags:
   - Load Test
   - Unit Test
