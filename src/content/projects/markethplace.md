@@ -16,7 +16,7 @@ tags:
 
 ### Case Study Template
 
-Case studies are narratives that provide contextual details to tell a story about a particular project and the strategic process in which it developed. Your case study should be well written and articulated to lend credibility to your abilities as a developer, designer, or data scientist. It should offer the reader a rational and logical perspective and present your work in a thoughtful and concise manner that is easy to follow. This tool is a key component to a successful portfolio and will serve you well in your quest for employment. 
+Case studies are narratives that provide contextual details to tell a story about a particular project and the strategic process in which it developed. Your case study should be well written and articulated to lend credibility to your abilities as a developer. It should offer the reader a rational and logical perspective and present your work in a thoughtful and concise manner that is easy to follow. This tool is a key component to a successful portfolio and will serve you well in your quest for employment. 
 
 ### Overview 
 
