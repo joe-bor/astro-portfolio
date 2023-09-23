@@ -4,9 +4,9 @@ github: https://github.com/joe-bor/Project3_fullstack_bigpoppacode-starterKit
 live: https://markethplace.joe-bor.me/
 publishDate: 2023-08-20 00:00:00
 img: /assets/markethplace.png
-img_alt: Current cryptoprices on the left, active cart on the right, and user browsing the nft marketplace in middle
+img_alt: Current cryptocurrency prices on the left, active cart on the right, and user browsing the nft marketplace in middle
 description: |
-  A web app that allows user to add their favorite NFTs to cart, while giving you the current crypto prices using coin gecko api
+  A web app that allows user to login (via a form or MetaMask Wallet) add their favorite NFTs to cart, and checkout. Shows you the current cryptocurrency prices using coin gecko api.
 tags:
   - MERN
   - CoinGecko API
