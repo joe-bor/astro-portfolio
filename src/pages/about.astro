@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro'
 ---
 
 <BaseLayout title="About | Joezari Borlongan" description="About Joezari Borlongan Lorem Ipsum">
@@ -47,13 +48,93 @@ import Hero from '../components/Hero.astro';
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<p>Full-Stack Software Engineering Certification | General Assembly (remote) | Mar 2023 - Sept 2023</p>
+					<ul>
+						<li>
+							Full-stack software engineering 420+ hour program focused on product development fundamentals, object-oriented programming, MVC frameworks, data modeling, and team collaboration strategies. Developing in areas such as React, MongoDB, Mongoose, SQL, Sequelize, JavaScript, Node.js, Express and more.
+						</li>
+					</ul>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<div class="skill-logos">
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=mongodb" height="45" alt="mongodb logo"  /> <p>MongoDB</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=express" height="45" alt="express logo"  /> <p>Express</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=react" height="45" alt="react logo"  /> <p>React</p>							
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=nodejs" height="45" alt="nodejs logo"  /> <p>Node.Js</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=ts" height="45" alt="typescript logo"  /> <p>TypeScript</p>							
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=astro" height="45" alt="astro logo"  /> <p>Astro</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=remix" height="45" alt="remix logo"  /> <p>Remix</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=tailwind" height="45" alt="tailwindcss logo"/> <p>Tailwind</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=sass" height="45" alt="sass logo"/> <p>Sass</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=js" height="45" alt="javascript logo"/> <p>JavaScript</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=html" height="45" alt="html5 logo"/> <p>HTML</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=css" height="45" alt="css3 logo"/> <p>CSS</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=postman" height="45" alt="postman logo"/> <p>Postman</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=jest" height="45" alt="jest logo"/> <p>Jest</p>
+						</div>
+						<div class="skill-pair">
+							<img src="https://skillicons.dev/icons?i=git" height="45" alt="git logo"/> <p>Git</p>
+						</div>
+					</div>
+					<div class="soft-logos">
+						<div class="skill-logos">
+							<Icon icon="team-logo" color="var(--accent-regular)" size="2.5rem" gradient /><p>Team Work</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="brain" color="var(--accent-regular)" size="2.5rem" gradient /><p>Critical Thinking</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="chat" color="var(--accent-regular)" size="2.5rem" gradient /><p>Communication</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="time" color="var(--accent-regular)" size="2.5rem" gradient /><p>Time Management</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="bulb" color="var(--accent-regular)" size="2.5rem" gradient /><p>Creativity</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="eye" color="var(--accent-regular)" size="2.5rem" gradient /><p>Attention To Detail</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="give" color="var(--accent-regular)" size="2.5rem" gradient /><p>Empathy</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="ear" color="var(--accent-regular)" size="2.5rem" gradient /><p>Listening Skills</p>
+						</div>
+						<div class="skill-logos">
+							<Icon icon="pencil-line" color="var(--accent-regular)" size="2.5rem" gradient /><p>Documentation Skills</p>
+						</div>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -63,6 +144,31 @@ import Hero from '../components/Hero.astro';
 </BaseLayout>
 
 <style>
+
+	.soft-logos {
+		margin-top: .5rem;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.skill-pair {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 6rem;
+		margin: .4rem;
+	}
+
+	.skill-logos {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+		margin: 1rem;
+	}
+
 	.about {
 		display: flex;
 		flex-direction: column;
