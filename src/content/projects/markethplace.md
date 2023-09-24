@@ -9,7 +9,7 @@ description: |
   A fullstack web app that allows user to login (via a form or MetaMask Wallet) add their favorite NFTs to cart, and checkout. Shows you the current cryptocurrency prices using coin gecko api.
 tags:
   - MERN
-  - Fullstack
+  - Full Stack
   - Custom Framework
   - CDD
   - MetaMask
