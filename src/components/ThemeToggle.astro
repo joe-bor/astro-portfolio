@@ -78,13 +78,19 @@ import Icon from './Icon.astro';
 			const setTheme = (dark: boolean) => {
 				document.documentElement.classList[dark ? 'add' : 'remove']('theme-dark');
 				button.setAttribute('aria-pressed', String(dark));
+				localStorage.setItem('theme', dark ? 'dark' : 'light')
 			};
 
 			// Toggle the theme when a user clicks the button.
 			button.addEventListener('click', () => setTheme(!this.isDark()));
 
-			// Initialize button state to reflect current theme.
-			setTheme(this.isDark());
+			// Initialize button state to reflect current theme or use a default if no theme is set in localStorage.
+			const storedTheme = localStorage.getItem('theme');
+			if (storedTheme) {
+				setTheme(storedTheme === 'dark');
+			} else {
+				setTheme(this.isDark()); // Fallback to current theme
+			}
 		}
 
 		isDark() {
@@ -92,4 +98,5 @@ import Icon from './Icon.astro';
 		}
 	}
 	customElements.define('theme-toggle', ThemeToggle);
+
 </script>

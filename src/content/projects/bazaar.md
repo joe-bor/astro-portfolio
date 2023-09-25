@@ -52,7 +52,7 @@ tags:
 ---
 
 
-- The Team: 
+- [![Typing SVG](https://readme-typing-svg.demolab.com?font=short+stack&size=25&duration=2500&pause=800&color=FBB270&background=AB16FF00&center=true&vCenter=true&width=435&lines=Meet+the+team;My+fellow+Software+Engineers!)](https://git.io/typing-svg)
     - Avary Mitchell | [github](https://github.com/Anmitchell) | [linkedIn](https://www.linkedin.com/in/avary-mitchell-6b493612a/)
     - Brendan Mohan | [github](https://github.com/MoHanSolo) | [linkedIn](https://www.linkedin.com/in/brendan-mohan/)
     - Hailey Sellars (Scrum Master) | [github](https://github.com/hlysllrs) | [linkedIn](https://www.linkedin.com/in/hailey-sellars/)
