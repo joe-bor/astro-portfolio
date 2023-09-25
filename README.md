@@ -2,7 +2,7 @@
 ---
 
 
-<h1 align='center'> This is the personal portfolio of <strong>Joezari Borlongan</strong> </h1>
+<h1 align='center'> Joezari Borlongan: Personal Portfolio </h1>
 <h3 align='center'> Built with :
 <img src="https://skillicons.dev/icons?i=ts" height="45" alt="typescript logo"  />
 <img src="https://skillicons.dev/icons?i=js" height="45" alt="javascript logo"  />
