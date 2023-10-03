@@ -32,21 +32,19 @@ const projects = (await getCollection('projects'))
 			<header class="hero">
 				<Hero
 					title="Greetings, I'm Joezari Borlongan"
-					tagline="Full-Stack Software Engineer."
+					tagline="Full-Stack Software Engineer with a unique blend of technical prowess and customer-centric soft skills honed in the world of retail. I work proactively, autonomously and collaboratively."
 				>
 					<div class="roles">
-						<Pill><Icon icon="typescript-logo" size="1.33em" /> TypeScript</Pill>
 						<Pill><Icon icon="mongo-logo" size="1.33em" /> MongoDB</Pill>
 						<Pill><Icon icon="express-logo" size="1.33em" /> Express</Pill>
 						<Pill><Icon icon="react-logo" size="1.33em" /> React</Pill>
 						<Pill><Icon icon="node-logo" size="1.33em" /> Node</Pill>
+						<Pill><Icon icon="typescript-logo" size="1.33em" /> TypeScript</Pill>
+						<Pill><Icon icon="next-logo" size="1.33em" /> Next.js</Pill>
+						<Pill><Icon icon="postgresql-logo" size="1.33em" /> PostgreSQL</Pill>
+						<Pill><Icon icon="prisma-logo" size="1.33em" /> Prisma</Pill>
+						<Pill><Icon icon="tailwind-logo" size="1.33em" /> Tailwind</Pill>
 					</div>
-					<!-- <div class="roles">
-						<Pill><Icon icon="mongo-logo" size="1.33em" /> Nginx</Pill>
-						<Pill><Icon icon="express-logo" size="1.33em" /> SASS</Pill>
-						<Pill><Icon icon="react-logo" size="1.33em" /> ASTRO</Pill>
-						<Pill><Icon icon="node-logo" size="1.33em" /> JEST</Pill>
-					</div> -->
 				</Hero>
 
 				<img
@@ -146,6 +144,8 @@ const projects = (await getCollection('projects'))
 		.roles {
 			margin-top: 0.5rem;
 			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
 			gap: 0.5rem;
 		}
 

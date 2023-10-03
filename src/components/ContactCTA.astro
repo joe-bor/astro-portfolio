@@ -1,10 +1,15 @@
 ---
 import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
+import Pill from './Pill.astro';
 ---
 
 <aside>
-	<h2>Let's work together!</h2>
+	<div>
+		<h2>Let's work together! </h2>
+		<h5><a href="https://docs.google.com/document/d/1FqIsfCblDcE0nWujYbim7ic1P3AXl7qr/edit?usp=sharing&ouid=100260520234143275549&rtpof=true&sd=true">My Resume<Icon icon='pdf-logo' gradient={true} size='1em'></Icon></a></h5>
+	</div>
+	
 	<CallToAction href="mailto:bor.joezar@gmail.com">
 		Send Me a Message
 		<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -28,6 +33,23 @@ import Icon from './Icon.astro';
 		font-size: var(--text-xl);
 		text-align: center;
 		max-width: 15ch;
+	}
+
+	h5 {
+		font-size: var(--text-xl);
+		text-align: center;
+		max-width: 15ch;
+		color: var(--accent-regular);
+	}
+	
+	a {
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	a:hover {
+		opacity: 0.85;
+		text-decoration: underline;
 	}
 
 	@media (min-width: 50em) {
