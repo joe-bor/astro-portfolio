@@ -20,6 +20,15 @@ const { title, description } = Astro.props;
 	<head>
 		<MainHead title={title} description={description} />
 		<ViewTransitions/>
+		<!-- Google tag (gtag.js) -->
+		<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-DWZ2ZJFLT5"></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-DWZ2ZJFLT5');
+		</script>
 	</head>
 	<body>
 		<div class="stack backgrounds">
