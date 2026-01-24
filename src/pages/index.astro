@@ -35,13 +35,31 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 					title="From retail floors to LinkedIn's codebase"
 					tagline="I build tools that make people's lives easier. Self-taught developer with a knack for turning real problems into practical solutions."
 				>
-					<div class="roles">
-						<Pill><Icon icon="react-logo" size="1.33em" /> React</Pill>
-						<Pill><Icon icon="typescript-logo" size="1.33em" /> TypeScript</Pill>
-						<Pill><Icon icon="java-logo" size="1.33em" /> Java</Pill>
-						<Pill><Icon icon="spring-logo" size="1.33em" /> Spring Boot</Pill>
-						<Pill><Icon icon="postgresql-logo" size="1.33em" /> PostgreSQL</Pill>
-						<Pill><Icon icon="mongo-logo" size="1.33em" /> MongoDB</Pill>
+					<div class="tech-stack">
+						<div class="tech-item">
+							<Icon icon="react-logo" size="2.5em" />
+							<span>React</span>
+						</div>
+						<div class="tech-item">
+							<Icon icon="typescript-logo" size="2.5em" />
+							<span>TypeScript</span>
+						</div>
+						<div class="tech-item">
+							<Icon icon="java-logo" size="2.5em" />
+							<span>Java</span>
+						</div>
+						<div class="tech-item">
+							<Icon icon="spring-logo" size="2.5em" />
+							<span>Spring Boot</span>
+						</div>
+						<div class="tech-item">
+							<Icon icon="postgresql-logo" size="2.5em" />
+							<span>PostgreSQL</span>
+						</div>
+						<div class="tech-item">
+							<Icon icon="mongo-logo" size="2.5em" />
+							<span>MongoDB</span>
+						</div>
 					</div>
 				</Hero>
 
@@ -114,8 +132,20 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 		gap: 2rem;
 	}
 
-	.roles {
+	.tech-stack {
 		display: none;
+	}
+
+	.tech-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.tech-item span {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
 	}
 
 	.hero img {
@@ -134,12 +164,16 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 			gap: 3.75rem;
 		}
 
-		.roles {
-			margin-top: 0.5rem;
+		.tech-stack {
+			margin-top: 1rem;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
-			gap: 0.5rem;
+			gap: 1.5rem;
+		}
+
+		.tech-item span {
+			font-size: var(--text-md);
 		}
 
 		.hero img {
