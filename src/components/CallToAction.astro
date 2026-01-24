@@ -14,59 +14,38 @@ const { href } = Astro.props;
 		display: flex;
 		place-content: center;
 		text-align: center;
-		padding: 0.56em 2em;
-		gap: 0.8em;
+		padding: 0.5em 1.5em;
+		gap: 0.6em;
 		color: var(--accent-text-over);
 		text-decoration: none;
 		line-height: 1.1;
 		border-radius: 999rem;
 		overflow: hidden;
 		background: var(--gradient-accent-orange);
-		box-shadow: var(--shadow-md);
+		box-shadow: var(--shadow-sm);
 		white-space: nowrap;
-		animation: pulse 2s infinite;
+		transition: box-shadow 0.2s ease, transform 0.2s ease;
 	}
 
-	@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.06);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-}
+	a:hover {
+		box-shadow: var(--shadow-md);
+		transform: translateY(-2px);
+	}
+
+	a:active {
+		transform: translateY(0);
+	}
 
 	@media (min-width: 20em) {
 		a {
-			font-size: var(--text-lg);
+			font-size: var(--text-md);
 		}
-	}
-
-	/* Overlay for hover effects. */
-	a::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		transition: background-color var(--theme-transition);
-		mix-blend-mode: overlay;
-	}
-
-	a:focus::after,
-	a:hover::after {
-		background-color: hsla(var(--gray-999-basis), 0.3);
 	}
 
 	@media (min-width: 50em) {
 		a {
-			padding: 1.125rem 2.5rem;
-			font-size: var(--text-xl);
+			padding: 0.75rem 1.75rem;
+			font-size: var(--text-lg);
 		}
 	}
 </style>
