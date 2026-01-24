@@ -7,98 +7,334 @@ interface Props {
 }
 
 const { data, slug } = Astro.props.project;
+
+// Extract first sentence as tagline
+function getTagline(description: string): string {
+	const firstSentence = description.split(/[.!?]/)[0];
+	return firstSentence.trim();
+}
+
+const tagline = getTagline(data.description);
+const hasLiveLink = data.live && data.live.trim() !== '';
 ---
 
-<a class="card" href={`/projects/${slug}`}>
-	<span class="title">{data.title}</span>
-	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
-</a>
-<div class='links'>
-	<div>
-		<a class='project-link' target="_blank" href={data.github}> <Icon icon="github-logo" size='1.5em'/> </a>
-		<a class='project-link'' target="_blank" href={data.live}> <Icon icon="rocket-launch" size="1.5em"/> </a>
+<article class="project-card">
+	<a class="card-link" href={`/projects/${slug}`}>
+		<div class="image-container">
+			<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
+			<div class="gradient-overlay"></div>
+		</div>
+
+		<div class="card-content">
+			<h3 class="title">{data.title}</h3>
+			<p class="tagline">{tagline}</p>
+			<ul class="tags">
+				{data.tags.slice(0, 3).map(tag => <li class="tag">{tag}</li>)}
+			</ul>
+		</div>
+
+		<div class="hover-overlay">
+			<h3 class="title">{data.title}</h3>
+			<p class="description">{data.description}</p>
+			<ul class="tags-full">
+				{data.tags.map(tag => <li class="tag">{tag}</li>)}
+			</ul>
+		</div>
+	</a>
+
+	<div class="action-buttons">
+		<a
+			class="action-btn"
+			href={data.github}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label={`View ${data.title} on GitHub`}
+		>
+			<Icon icon="github-logo" size="1.25em" />
+			<span>Code</span>
+		</a>
+		{hasLiveLink && (
+			<a
+				class="action-btn"
+				href={data.live}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={`View ${data.title} live demo`}
+			>
+				<Icon icon="rocket-launch" size="1.25em" />
+				<span>Demo</span>
+			</a>
+		)}
 	</div>
-	<ul class="tags">
-		{data.tags.slice(0, 5).map(tag => <li>{tag}</li>)}
-	</ul>
-</div>
+</article>
 
 <style>
-	
-	.card {
-		display: grid;
-		grid-template: auto 1fr / auto 1fr;
-		height: 11rem;
+	.project-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.card-link {
+		position: relative;
+		display: block;
+		height: 14rem;
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
 		border-radius: 0.75rem;
 		overflow: hidden;
 		box-shadow: var(--shadow-sm);
 		text-decoration: none;
-		font-family: var(--font-brand);
-		font-size: var(--text-lg);
-		font-weight: 500;
 		transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 	}
 
-	.card:hover {
+	.card-link:hover,
+	.card-link:focus-visible {
 		box-shadow: var(--shadow-md);
 		transform: translateY(-4px);
-		border-color: var(--gray-700);
-	}
-	
-	.links {
-		display:none
+		border-color: var(--accent-regular);
+		outline: none;
 	}
 
-	.project-link {
-		text-decoration:none;
-		margin: 0 .5rem;
+	.image-container {
+		position: absolute;
+		inset: 0;
 	}
 
-	.title {
-		grid-area: 1 / 1 / 2 / 2;
-		z-index: 1;
-		margin: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: var(--gray-999);
-		color: var(--gray-200);
-		border-radius: 0.375rem;
-	}
-
-	img {
-		grid-area: 1 / 1 / 3 / 3;
+	.image-container img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
 
-	.tags {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-		flex-grow: 1;
-		list-style-type: square;
-		color: var(--gray-200)
+	.gradient-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.95) 0%,
+			rgba(0, 0, 0, 0.7) 40%,
+			rgba(0, 0, 0, 0.3) 70%,
+			rgba(0, 0, 0, 0.1) 100%
+		);
 	}
 
+	.card-content {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 1rem;
+		padding-top: 1.5rem;
+		z-index: 1;
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.9) 0%,
+			rgba(0, 0, 0, 0.7) 60%,
+			transparent 100%
+		);
+	}
+
+	.title {
+		font-family: var(--font-brand);
+		font-size: var(--text-lg);
+		font-weight: 600;
+		color: #ffffff;
+		margin: 0 0 0.25rem;
+		line-height: 1.2;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	}
+
+	.tagline {
+		font-size: var(--text-sm);
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem;
+		line-height: 1.4;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.tag {
+		font-size: var(--text-xs);
+		padding: 0.125rem 0.5rem;
+		background: rgba(0, 0, 0, 0.6);
+		color: rgba(255, 255, 255, 0.95);
+		border-radius: 999rem;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	}
+
+	/* Hover overlay - hidden by default */
+	.hover-overlay {
+		position: absolute;
+		inset: 0;
+		padding: 1.25rem;
+		background: rgba(0, 0, 0, 0.92);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.25s ease, visibility 0.25s ease;
+		z-index: 2;
+	}
+
+	.hover-overlay .title {
+		margin-bottom: 0.5rem;
+	}
+
+	.hover-overlay .description {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		margin: 0 0 0.75rem;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.tags-full {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.tags-full .tag {
+		background: var(--accent-regular);
+		color: var(--gray-999);
+	}
+
+	/* Show overlay on hover/focus (desktop) */
+	.card-link:hover .hover-overlay,
+	.card-link:focus-visible .hover-overlay {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Action buttons - always visible */
+	.action-buttons {
+		display: flex;
+		gap: 0.5rem;
+		margin-top: 0.75rem;
+	}
+
+	.action-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding: 0.5rem 0.75rem;
+		font-size: var(--text-sm);
+		font-weight: 500;
+		color: var(--gray-200);
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: 0.5rem;
+		text-decoration: none;
+		transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	}
+
+	.action-btn:hover,
+	.action-btn:focus-visible {
+		background: var(--gray-800);
+		border-color: var(--accent-regular);
+		color: var(--gray-0);
+		outline: none;
+	}
+
+	/* Desktop styles */
 	@media (min-width: 50em) {
-		.card {
+		.card-link {
 			height: 22rem;
 			border-radius: 1.5rem;
 		}
 
-		.title {
-			border-radius: 0.9375rem;
+		.card-content {
+			padding: 1.5rem;
 		}
 
-		.links {
-			margin-top: 0.5rem;
-			z-index: 2;
-			display:flex;
-			flex-direction:row;
+		.title {
+			font-size: var(--text-xl);
+		}
+
+		.tagline {
+			font-size: var(--text-md);
+		}
+
+		.hover-overlay {
+			padding: 1.5rem;
+		}
+
+		.hover-overlay .title {
+			font-size: var(--text-xl);
+		}
+
+		.hover-overlay .description {
+			font-size: var(--text-md);
+			-webkit-line-clamp: 5;
+		}
+
+		.action-buttons {
+			margin-top: 1rem;
+		}
+
+		.action-btn {
+			padding: 0.625rem 1rem;
+		}
+	}
+
+	/* Touch device support - tap to toggle overlay */
+	@media (hover: none) {
+		.project-card.touched .hover-overlay {
+			opacity: 1;
+			visibility: visible;
 		}
 	}
 </style>
+
+<script>
+	// Handle touch interaction for mobile
+	document.querySelectorAll('.project-card').forEach(card => {
+		const cardLink = card.querySelector('.card-link') as HTMLAnchorElement;
+
+		cardLink?.addEventListener('click', (e) => {
+			// On touch devices, first tap shows overlay, second tap navigates
+			if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+				if (!card.classList.contains('touched')) {
+					e.preventDefault();
+					// Remove touched state from other cards
+					document.querySelectorAll('.project-card.touched').forEach(c => {
+						if (c !== card) c.classList.remove('touched');
+					});
+					card.classList.add('touched');
+				}
+				// If already touched, let the click through for navigation
+			}
+		});
+	});
+
+	// Remove touched state when clicking outside
+	document.addEventListener('click', (e) => {
+		const target = e.target as HTMLElement;
+		if (!target.closest('.project-card')) {
+			document.querySelectorAll('.project-card.touched').forEach(card => {
+				card.classList.remove('touched');
+			});
+		}
+	});
+</script>
