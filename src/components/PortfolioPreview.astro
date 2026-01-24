@@ -18,10 +18,16 @@ const tagline = getTagline(data.description);
 const hasLiveLink = data.live && data.live.trim() !== '';
 ---
 
-<article class="project-card">
+<article class="project-card reveal-on-scroll">
 	<a class="card-link" href={`/projects/${slug}`}>
 		<div class="image-container">
-			<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
+			<img
+				src={data.img}
+				alt={data.img_alt || ''}
+				loading="lazy"
+				decoding="async"
+				transition:name={`project-${slug}`}
+			/>
 			<div class="gradient-overlay"></div>
 		</div>
 

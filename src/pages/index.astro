@@ -34,6 +34,7 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 				<Hero
 					title="From retail floors to LinkedIn's codebase"
 					tagline="I build tools that make people's lives easier. Self-taught developer with a knack for turning real problems into practical solutions."
+					staggerTagline={true}
 				>
 					<div class="tech-stack">
 						<div class="tech-item">
@@ -75,7 +76,7 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<!-- Journey Preview Section -->
 			<section class="section with-background">
-				<header class="section-header stack gap-2 lg:gap-4">
+				<header class="section-header stack gap-2 lg:gap-4 reveal-on-scroll">
 					<h3>My Journey</h3>
 					<p>From immigrant to retail manager to software engineer — each step shaped who I am.</p>
 				</header>
@@ -94,7 +95,7 @@ const highlightedEvents = timelineData?.data?.filter(e => e.highlight) || [];
 
 			<!-- Featured Projects Section -->
 			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
+				<header class="section-header stack gap-2 lg:gap-4 reveal-on-scroll">
 					<h3>Featured Projects</h3>
 					<p>Real tools solving real problems — from family organization to work automation.</p>
 				</header>

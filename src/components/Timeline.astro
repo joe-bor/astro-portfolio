@@ -37,7 +37,7 @@ function formatDate(date: string): string {
 
 <div class="timeline">
   {displayEvents.map((event, index) => (
-    <div class:list={['timeline-item', event.type, { highlight: event.highlight }]}>
+    <div class:list={['timeline-item', 'reveal-on-scroll', event.type, { highlight: event.highlight }]}>
       <div class="marker-col">
         <div class={`marker ${event.type}`}>
           <Icon icon={typeIcons[event.type]} size="1em" />

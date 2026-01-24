@@ -3,15 +3,26 @@ interface Props {
 	title: string;
 	tagline?: string;
 	align?: 'start' | 'center';
+	staggerTagline?: boolean;
 }
 
-const { align = 'center', tagline, title } = Astro.props;
+const { align = 'center', tagline, title, staggerTagline = false } = Astro.props;
+
+// Split tagline into words for staggering (if enabled)
+const taglineWords = staggerTagline && tagline ? tagline.split(' ') : null;
 ---
 
 <div class:list={['hero stack gap-4', align]}>
 	<div class="stack gap-2">
 		<h1 transition:animate='slide' class="title">{title}</h1>
-		{tagline && <p class="tagline">{tagline}</p>}
+		{tagline && !staggerTagline && <p class="tagline">{tagline}</p>}
+		{taglineWords && (
+			<p class="tagline tagline-stagger" data-stagger-tagline>
+				{taglineWords.map((word, i) => (
+					<><span class="stagger-word" style={`--word-index: ${i}`}>{word}</span>{' '}</>
+				))}
+			</p>
+		)}
 	</div>
 	<slot />
 </div>
@@ -33,6 +44,28 @@ const { align = 'center', tagline, title } = Astro.props;
 		color: var(--gray-0);
 	}
 
+	/* Stagger animation styles */
+	.tagline-stagger .stagger-word {
+		display: inline;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.tagline-stagger.animate-stagger .stagger-word {
+			opacity: 0;
+			animation: stagger-fade-in 0.4s ease-out forwards;
+			animation-delay: calc(var(--word-index) * 80ms);
+		}
+	}
+
+	@keyframes stagger-fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
 	@media (min-width: 50em) {
 		.hero {
 			font-size: var(--text-xl);
@@ -52,3 +85,26 @@ const { align = 'center', tagline, title } = Astro.props;
 		}
 	}
 </style>
+
+<script>
+	function initStaggerAnimation() {
+		const taglineEl = document.querySelector('[data-stagger-tagline]');
+		if (!taglineEl) return;
+
+		// Check if this is initial load (not back navigation)
+		const hasSeenAnimation = sessionStorage.getItem('hero-stagger-seen');
+		const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+		const isBackNavigation = navEntry?.type === 'back_forward';
+
+		if (!hasSeenAnimation && !isBackNavigation) {
+			taglineEl.classList.add('animate-stagger');
+			sessionStorage.setItem('hero-stagger-seen', 'true');
+		}
+	}
+
+	// Run on initial load
+	initStaggerAnimation();
+
+	// Handle View Transitions navigation
+	document.addEventListener('astro:page-load', initStaggerAnimation);
+</script>
