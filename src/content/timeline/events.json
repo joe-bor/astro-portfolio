@@ -70,7 +70,7 @@
   {
     "date": "2024-08",
     "title": "Year Up Program",
-    "description": "Java, Spring Boot, SQL training with corporate readiness",
+    "description": "Java, Spring Boot, SQL training with corporate readiness (Aug 2024 - Jan 2025)",
     "type": "education"
   },
   {
@@ -93,9 +93,9 @@
     "type": "work"
   },
   {
-    "date": "present",
-    "title": "Building & Exploring",
-    "description": "Developing side projects (FamilyHub, Schedule Parser) while seeking full-time opportunities",
+    "date": "2025-08",
+    "title": "Back at Lucky's + Building",
+    "description": "Returned to Lucky's full-time while developing side projects and exploring opportunities",
     "type": "work"
   }
 ]
