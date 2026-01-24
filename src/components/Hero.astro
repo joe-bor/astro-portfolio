@@ -19,7 +19,7 @@ const taglineWords = staggerTagline && tagline ? tagline.split(' ') : null;
 		{taglineWords && (
 			<p class="tagline tagline-stagger" data-stagger-tagline>
 				{taglineWords.map((word, i) => (
-					<span class="stagger-word" style={`--word-index: ${i}`}>{word} </span>
+					<><span class="stagger-word" style={`--word-index: ${i}`}>{word}</span>{' '}</>
 				))}
 			</p>
 		)}
