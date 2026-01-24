@@ -13,4 +13,15 @@ export const collections = {
 			img_alt: z.string().optional(),
 		}),
 	}),
+	timeline: defineCollection({
+		type: 'data',
+		schema: z.array(z.object({
+			date: z.string(),
+			title: z.string(),
+			description: z.string(),
+			type: z.enum(['personal', 'education', 'work', 'certification']),
+			highlight: z.boolean().optional(),
+			details: z.string().optional(),
+		})),
+	}),
 };

@@ -1,0 +1,142 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Timeline from '../components/Timeline.astro';
+
+const timelineData = await getEntry('timeline', 'events');
+const events = timelineData?.data || [];
+---
+
+<BaseLayout title="My Journey | Joezari Borlongan" description="From immigrant to retail manager to software engineer - my career journey">
+	<div class="stack gap-20">
+		<main class="wrapper journey">
+			<Hero
+				title="My Journey"
+				tagline="From the Philippines to LinkedIn's codebase - every step shaped who I am today."
+			/>
+
+			<section class="intro">
+				<p>
+					My path to software engineering wasn't traditional. I immigrated to the US at 14, spent years managing retail departments, became a dad, and then discovered a passion for building things with code. Each experience taught me something valuable - problem-solving, leadership, persistence, and the importance of building tools that actually help people.
+				</p>
+			</section>
+
+			<section class="timeline-section">
+				<Timeline events={events} showAll={true} />
+			</section>
+
+			<section class="legend">
+				<h3>Timeline Legend</h3>
+				<div class="legend-items">
+					<div class="legend-item">
+						<span class="legend-dot personal"></span>
+						<span>Personal Milestone</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-dot education"></span>
+						<span>Education</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-dot work"></span>
+						<span>Work Experience</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-dot certification"></span>
+						<span>Certification</span>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.journey {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.intro {
+		max-width: 65ch;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.intro p {
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+		line-height: 1.7;
+	}
+
+	.timeline-section {
+		padding: 2rem 0;
+	}
+
+	.legend {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 1.5rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+	}
+
+	.legend h3 {
+		font-size: var(--text-md);
+		color: var(--gray-0);
+		margin: 0 0 1rem;
+		text-align: center;
+	}
+
+	.legend-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+	}
+
+	.legend-dot {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+	}
+
+	.legend-dot.personal {
+		background: var(--accent-regular);
+	}
+
+	.legend-dot.education {
+		background: var(--accent-light);
+	}
+
+	.legend-dot.work {
+		background: var(--accent-dark);
+	}
+
+	.legend-dot.certification {
+		background: var(--accent-text-over);
+	}
+
+	@media (min-width: 50em) {
+		.journey {
+			gap: 4rem;
+		}
+
+		.intro p {
+			font-size: var(--text-xl);
+		}
+	}
+</style>

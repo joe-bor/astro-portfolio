@@ -1,0 +1,101 @@
+[
+  {
+    "date": "2009",
+    "title": "Moved to the US",
+    "description": "Immigrated from the Philippines at 14 - a fresh start in a new world",
+    "type": "personal"
+  },
+  {
+    "date": "2016",
+    "title": "Started Retail Career",
+    "description": "Joined Safeway as Seafood Manager / Meat Cutter",
+    "type": "work"
+  },
+  {
+    "date": "2021-01",
+    "title": "Promoted to Meat Manager",
+    "description": "Took over department operations at Lucky's Market",
+    "type": "work"
+  },
+  {
+    "date": "2022",
+    "title": "Became a Dad",
+    "description": "Life-changing moment that sparked career reflection",
+    "type": "personal",
+    "highlight": true
+  },
+  {
+    "date": "2022",
+    "title": "Discovered Coding",
+    "description": "Axie Infinity community tools inspired me to build. Started Harvard's CS50.",
+    "type": "education"
+  },
+  {
+    "date": "2023-03",
+    "title": "General Assembly Bootcamp",
+    "description": "24-week intensive: React, Node.js, MongoDB, Express",
+    "type": "education"
+  },
+  {
+    "date": "2023-09",
+    "title": "Graduated & First Tech Role",
+    "description": "Completed bootcamp, joined RadicalX as Software Developer",
+    "type": "work"
+  },
+  {
+    "date": "2023-12",
+    "title": "AI Trainer at Scale AI",
+    "description": "Practiced CS fundamentals training LLMs at Remotasks",
+    "type": "work"
+  },
+  {
+    "date": "2024-03",
+    "title": "Encode Club Blockchain",
+    "description": "Learned Solidity and smart contract development",
+    "type": "education"
+  },
+  {
+    "date": "2024-04",
+    "title": "Encode Club AI Bootcamp",
+    "description": "Explored GenAI tools: v0, Vercel AI SDK",
+    "type": "education"
+  },
+  {
+    "date": "2024-05",
+    "title": "Atlas Agent",
+    "description": "PropTech startup: Led landing page redesign, built AI chatbot demo, 100+ agencies on waitlist",
+    "type": "work",
+    "highlight": true
+  },
+  {
+    "date": "2024-08",
+    "title": "Year Up Program",
+    "description": "Java, Spring Boot, SQL training with corporate readiness",
+    "type": "education"
+  },
+  {
+    "date": "2025-01",
+    "title": "AWS Certified",
+    "description": "Earned AWS Cloud Practitioner certification",
+    "type": "certification"
+  },
+  {
+    "date": "2025-02",
+    "title": "LinkedIn Engineering Intern",
+    "description": "Built VELMA (3,000+ vanity URLs), led zero-trust security migrations",
+    "type": "work",
+    "highlight": true
+  },
+  {
+    "date": "2025-07",
+    "title": "Internship Complete",
+    "description": "Shipped production tools, gained enterprise engineering experience",
+    "type": "work"
+  },
+  {
+    "date": "present",
+    "title": "Building & Exploring",
+    "description": "Developing side projects (FamilyHub, Schedule Parser) while seeking full-time opportunities",
+    "type": "work"
+  }
+]
