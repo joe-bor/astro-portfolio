@@ -26,16 +26,9 @@ const typeIcons: Record<string, string> = {
   certification: 'trophy',
 };
 
-const typeColors: Record<string, string> = {
-  personal: 'var(--accent-regular)',
-  education: 'var(--accent-light)',
-  work: 'var(--accent-dark)',
-  certification: 'var(--accent-text-over)',
-};
-
 function formatDate(date: string): string {
   if (date === 'present') return 'Present';
-  if (date.length === 4) return date; // Just year
+  if (date.length === 4) return date;
   const [year, month] = date.split('-');
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${monthNames[parseInt(month) - 1]} ${year}`;
@@ -44,26 +37,19 @@ function formatDate(date: string): string {
 
 <div class="timeline">
   {displayEvents.map((event, index) => (
-    <div
-      class:list={['timeline-item', { highlight: event.highlight }]}
-      data-type={event.type}
-    >
-      <div class="timeline-marker">
-        <div class="marker-icon" style={`background: ${typeColors[event.type]}`}>
-          <Icon icon={typeIcons[event.type]} size="1.2em" />
+    <div class:list={['timeline-item', event.type, { highlight: event.highlight }]}>
+      <div class="marker-col">
+        <div class={`marker ${event.type}`}>
+          <Icon icon={typeIcons[event.type]} size="1em" />
         </div>
-        {index < displayEvents.length - 1 && <div class="marker-line"></div>}
+        {index < displayEvents.length - 1 && <div class="connector"></div>}
       </div>
-      <div class="timeline-content">
-        <span class="timeline-date">{formatDate(event.date)}</span>
-        <h3 class="timeline-title">{event.title}</h3>
-        <p class="timeline-description">{event.description}</p>
-        {event.details && (
-          <details class="timeline-details">
-            <summary>Learn more</summary>
-            <p>{event.details}</p>
-          </details>
-        )}
+      <div class="content-col">
+        <div class="card">
+          <span class="date">{formatDate(event.date)}</span>
+          <h3 class="title">{event.title}</h3>
+          <p class="description">{event.description}</p>
+        </div>
       </div>
     </div>
   ))}
@@ -71,32 +57,23 @@ function formatDate(date: string): string {
 
 <style>
   .timeline {
-    position: relative;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 2rem 0;
   }
 
   .timeline-item {
-    display: flex;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
-    position: relative;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
   }
 
-  .timeline-item.highlight .timeline-content {
-    background: var(--gradient-subtle);
-    border: 1px solid var(--accent-regular);
-  }
-
-  .timeline-marker {
+  .marker-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-shrink: 0;
   }
 
-  .marker-icon {
+  .marker {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -104,33 +81,39 @@ function formatDate(date: string): string {
     align-items: center;
     justify-content: center;
     color: var(--gray-999);
-    box-shadow: var(--shadow-md);
-    z-index: 1;
+    flex-shrink: 0;
+    background: var(--accent-regular);
   }
 
-  .marker-line {
+  .marker.personal { background: var(--accent-regular); }
+  .marker.education { background: var(--accent-light); }
+  .marker.work { background: var(--accent-dark); }
+  .marker.certification { background: #f59e0b; }
+
+  .connector {
     width: 2px;
-    flex-grow: 1;
-    background: var(--gray-800);
-    margin-top: 0.5rem;
+    flex: 1;
+    min-height: 1rem;
+    background: var(--gray-700);
   }
 
-  .timeline-content {
+  .content-col {
+    padding-bottom: 1.5rem;
+  }
+
+  .card {
     background: var(--gray-999);
     border: 1px solid var(--gray-800);
-    border-radius: 1rem;
-    padding: 1.25rem 1.5rem;
-    flex-grow: 1;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
   }
 
-  .timeline-content:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  .timeline-item.highlight .card {
+    border-color: var(--accent-regular);
+    background: var(--gradient-subtle);
   }
 
-  .timeline-date {
+  .date {
     display: inline-block;
     font-size: var(--text-sm);
     color: var(--accent-regular);
@@ -138,97 +121,47 @@ function formatDate(date: string): string {
     margin-bottom: 0.25rem;
   }
 
-  .timeline-title {
-    font-size: var(--text-lg);
+  .title {
+    font-size: var(--text-md);
     color: var(--gray-0);
     margin: 0 0 0.5rem;
     line-height: 1.3;
   }
 
-  .timeline-description {
-    font-size: var(--text-md);
+  .description {
+    font-size: var(--text-sm);
     color: var(--gray-300);
     margin: 0;
     line-height: 1.5;
   }
 
-  .timeline-details {
-    margin-top: 1rem;
-  }
-
-  .timeline-details summary {
-    cursor: pointer;
-    color: var(--accent-regular);
-    font-size: var(--text-sm);
-    font-weight: 500;
-  }
-
-  .timeline-details summary:hover {
-    text-decoration: underline;
-  }
-
-  .timeline-details p {
-    margin-top: 0.75rem;
-    font-size: var(--text-sm);
-    color: var(--gray-300);
-    line-height: 1.6;
-  }
-
-  /* Alternating layout for larger screens */
+  /* Desktop enhancements */
   @media (min-width: 50em) {
     .timeline {
-      padding-left: 50%;
+      max-width: 800px;
     }
 
-    .timeline-item:nth-child(odd) {
-      flex-direction: row-reverse;
-      padding-right: calc(50% + 1.5rem);
-      padding-left: 0;
-      margin-left: calc(-100% + 2.5rem);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) {
-      padding-left: 1.5rem;
-    }
-
-    .timeline-marker {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-marker,
-    .timeline-item:nth-child(even) .timeline-marker {
-      left: 0;
-      transform: translateX(-50%);
-    }
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 50em) {
     .timeline-item {
-      padding-left: 0.5rem;
+      grid-template-columns: 4rem 1fr;
+      gap: 1.5rem;
     }
 
-    .marker-icon {
-      width: 2rem;
-      height: 2rem;
+    .marker {
+      width: 3rem;
+      height: 3rem;
     }
 
-    .timeline-content {
-      padding: 1rem;
+    .card {
+      padding: 1.25rem 1.5rem;
+      border-radius: 1rem;
     }
 
-    .timeline-title {
-      font-size: var(--text-md);
+    .title {
+      font-size: var(--text-lg);
     }
 
-    .timeline-description {
-      font-size: var(--text-sm);
+    .content-col {
+      padding-bottom: 2rem;
     }
   }
 </style>
