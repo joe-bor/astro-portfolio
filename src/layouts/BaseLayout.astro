@@ -38,8 +38,48 @@ const { title, description } = Astro.props;
 		</div>
 
 		<script>
-			// Add “loaded” class once the document has completely loaded.
+			// Add "loaded" class once the document has completely loaded.
 			addEventListener('load', () => document.documentElement.classList.add('loaded'));
+		</script>
+
+		<script>
+			// Scroll reveal fallback for browsers without CSS scroll-driven animations
+			function initScrollReveal() {
+				// Check if CSS scroll-driven animations are supported
+				const supportsScrollTimeline = CSS.supports('animation-timeline', 'view()');
+
+				if (supportsScrollTimeline) return;
+
+				// Fallback: Use Intersection Observer
+				const revealElements = document.querySelectorAll('.reveal-on-scroll');
+				if (revealElements.length === 0) return;
+
+				// Swap to fallback class
+				revealElements.forEach(el => {
+					el.classList.remove('reveal-on-scroll');
+					el.classList.add('reveal-on-scroll-fallback');
+				});
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('revealed');
+								observer.unobserve(entry.target);
+							}
+						});
+					},
+					{ threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
+				);
+
+				document.querySelectorAll('.reveal-on-scroll-fallback').forEach(el => {
+					observer.observe(el);
+				});
+			}
+
+			// Run on initial load and after View Transitions navigation
+			initScrollReveal();
+			document.addEventListener('astro:page-load', initScrollReveal);
 		</script>
 
 		<style>
