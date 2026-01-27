@@ -1,8 +1,8 @@
 # Portfolio
 
-My personal portfolio showcasing projects and my journey from retail to software engineering.
+[![Live](https://img.shields.io/badge/live-portfolio.joe--bor.me-purple)](https://portfolio.joe-bor.me)
 
-**Live:** [portfolio.joe-bor.me](https://portfolio.joe-bor.me)
+My personal portfolio showcasing projects and my journey from retail to software engineering.
 
 ![Portfolio preview](public/assets/portfolio-preview.png)
 
